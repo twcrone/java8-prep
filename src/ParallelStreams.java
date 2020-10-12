@@ -5,10 +5,11 @@ import java.util.stream.Stream;
 public class ParallelStreams {
 
   public static void main(String[] args) {
-    System.out.println("Sequential sum done in: " + measureSumPerf(ParallelStreams::sequentialSum, 10_000_000) + " msecs");
-    System.out.println("Parallel sum done in: " + measureSumPerf(ParallelStreams::parallelSum, 10_000_000) + " msecs");
+//    System.out.println("Sequential sum done in: " + measureSumPerf(ParallelStreams::sequentialSum, 10_000_000) + " msecs");
+//    System.out.println("Parallel sum done in: " + measureSumPerf(ParallelStreams::parallelSum, 10_000_000) + " msecs");
     System.out.println("Ranged sum done in: " + measureSumPerf(ParallelStreams::rangedSum, 10_000_000) + " msecs");
     System.out.println("Parallel ranged sum done in: " + measureSumPerf(ParallelStreams::parallelRangedSum, 10_000_000) + " msecs");
+    System.out.println("Fork Join ranged sum done int " + measureSumPerf(ForkJoinSumCalculator::forkJoinSum, 10_000_000) + " msecs");
   }
 
   public static long measureSumPerf(Function<Long, Long> adder, long n) {
